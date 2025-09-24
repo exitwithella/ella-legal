@@ -1,4 +1,4 @@
-import { format, formatDistanceToNow, isAfter, subDays } from "date-fns";
+import { format } from "date-fns";
 import { createRelativeLink } from "fumadocs-ui/mdx";
 import {
   DocsBody,
@@ -10,27 +10,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { source } from "@/lib/source";
 import { getMDXComponents } from "@/mdx-components";
-
-function _formatLastModified(date: Date | string | undefined): string {
-  if (!date) return "Unknown";
-
-  const dateObj = typeof date === "string" ? new Date(date) : date;
-  const now = new Date();
-  const sevenDaysAgo = subDays(now, 7);
-
-  if (isAfter(dateObj, sevenDaysAgo)) {
-    return formatDistanceToNow(dateObj, { addSuffix: true });
-  }
-
-  const currentYear = now.getFullYear();
-  const dateYear = dateObj.getFullYear();
-
-  if (dateYear === currentYear) {
-    return format(dateObj, "MMMM do");
-  } else {
-    return format(dateObj, "MMMM do, yyyy");
-  }
-}
 
 export default async function Page(props: PageProps<"/legal/[[...slug]]">) {
   const params = await props.params;
@@ -52,7 +31,9 @@ export default async function Page(props: PageProps<"/legal/[[...slug]]">) {
         )}
         <p style={{ fontSize: "0.875em" }}>
           <strong>Last modified:</strong>{" "}
-          {_formatLastModified(page.data.lastModified)}
+          {page.data.lastModified
+            ? format(page.data.lastModified, "MMMM do, yyyy")
+            : "Unknown"}
         </p>
       </div>
       <hr />
