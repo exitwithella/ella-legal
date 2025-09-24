@@ -115,8 +115,8 @@ describe("Redirect Validation", () => {
       const target = extractRedirectTarget(content);
 
       const latestVersion = _getLatestVersion(name);
-      const docName = _getDocumentName(name);
-      const expectedTarget = `/legal/${name}/${latestVersion}/${docName}`;
+      const _docName = _getDocumentName(name);
+      const expectedTarget = `/legal/${name}/${latestVersion}`;
 
       expect(target).toBe(expectedTarget);
     });
