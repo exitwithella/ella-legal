@@ -4,29 +4,36 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "next dev --turbo",
+    "dev": "next dev --turbo --port 3001",
     "start": "next start",
     "postinstall": "fumadocs-mdx",
-    "lint": "biome check",
-    "format": "biome format --write"
+    "lint": "biome check && remark . --quiet --frail",
+    "format": "biome format --write && remark . --output",
+    "lint:md": "remark . --quiet --frail",
+    "format:md": "remark . --output"
   },
   "dependencies": {
+    "fumadocs-core": "15.7.13",
+    "fumadocs-mdx": "11.10.1",
+    "fumadocs-ui": "15.7.13",
     "next": "15.5.3",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "fumadocs-ui": "15.7.13",
-    "fumadocs-core": "15.7.13",
-    "fumadocs-mdx": "11.10.1"
+    "react-dom": "^19.1.1"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.2.4",
+    "@tailwindcss/postcss": "^4.1.13",
+    "@types/mdx": "^2.0.13",
     "@types/node": "24.3.3",
     "@types/react": "^19.1.13",
     "@types/react-dom": "^19.1.9",
-    "typescript": "^5.9.2",
-    "@types/mdx": "^2.0.13",
-    "@tailwindcss/postcss": "^4.1.13",
-    "tailwindcss": "^4.1.13",
     "postcss": "^8.5.6",
-    "@biomejs/biome": "^2.2.4"
+    "remark-cli": "^12.0.1",
+    "remark-mdx": "^3.1.1",
+    "remark-preset-lint-consistent": "^6.0.1",
+    "remark-preset-lint-recommended": "^7.0.1",
+    "remark-stringify": "^11.0.0",
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5.9.2"
   }
 }

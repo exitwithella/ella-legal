@@ -1,0 +1,19 @@
+{
+  "plugins": [
+    "remark-mdx",
+    "remark-preset-lint-recommended",
+    "remark-preset-lint-consistent",
+    [
+      "remark-stringify",
+      {
+        "bullet": "-",
+        "emphasis": "_",
+        "fences": true,
+        "listItemIndent": "one",
+        "rule": "-",
+        "strong": "**",
+        "tightDefinitions": true
+      }
+    ]
+  ]
+}
