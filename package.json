@@ -10,7 +10,10 @@
     "lint": "biome check && remark . --quiet --frail",
     "format": "biome format --write && remark . --output",
     "lint:md": "remark . --quiet --frail",
-    "format:md": "remark . --output"
+    "format:md": "remark . --output",
+    "test": "vitest run --reporter=verbose",
+    "test:redirects": "vitest run test-redirects.test.js",
+    "test:latest": "vitest run test-latest-versions.test.js"
   },
   "dependencies": {
     "date-fns": "^4.1.0",
@@ -36,6 +39,7 @@
     "remark-preset-lint-recommended": "^7.0.1",
     "remark-stringify": "^11.0.0",
     "tailwindcss": "^4.1.13",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
   }
 }
