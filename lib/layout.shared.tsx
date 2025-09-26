@@ -1,4 +1,5 @@
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
+import { ThemeAwareLogo } from "@/components/ThemeAwareLogo";
 
 /**
  * Shared layout configurations
@@ -12,16 +13,8 @@ export function baseOptions(): BaseLayoutProps {
     nav: {
       title: (
         <>
-          <svg
-            width="24"
-            height="24"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-label="Logo"
-          >
-            <title>ELLA Logo</title>
-            <circle cx={12} cy={12} r={12} fill="currentColor" />
-          </svg>
-          ELLA Legal
+          <ThemeAwareLogo alt="ELLA Logo" />
+          ELLA Legal Center
         </>
       ),
     },
